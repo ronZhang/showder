@@ -1,0 +1,2 @@
+-module(lib_chan_auth).
+-export([make_challenge/0,make_response/2,is_response_correct/3]).
