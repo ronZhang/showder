@@ -27,20 +27,25 @@ start_mod(Ip,Port,SerId)->
 	start_client_sup()
 .
 
+
 %%开启客户端监控树
 start_client_sup() ->
+%% 	log4erl:info("client_sup statting"),
     {ok,_} = supervisor:start_child(
-               sd_sup,
-               {sd_tcp_client_sup,
-                {sd_tcp_client_sup, start_link,[]},
-                transient, infinity, supervisor, [sd_tcp_client_sup]}),
+               game_sup,
+               {game_client_sup,
+                {game_client_sup, start_link,[]},
+                transient, infinity, supervisor, [game_client_sup]}),
+%% 	log4erl:info("client_sup started"),
     ok.
 
 %%开启tcp listener监控树
 start_tcp_sup(Port) ->
+%% 	log4erl:info("sd_tcp_listener_sup statting"),
     {ok,_} = supervisor:start_child(
-               sd_sup,
-               {sd_tcp_listener_sup,
-                {sd_tcp_listener_sup, start_link, [Port]},
-                transient, infinity, supervisor, [sd_tcp_listener_sup]}),
+               game_sup,
+               {game_tcp_listener_sup,
+                {game_tcp_listener_sup, start_link, [Port]},
+                transient, infinity, supervisor, [game_tcp_listener_sup]}),
+%% 	log4erl:info("sd_tcp_listener_sup started"),
     ok.

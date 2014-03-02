@@ -13,8 +13,10 @@
 
 %%启动
 start_link(Port) ->
-	supervisor:start_link({local,?MODULE}, ?MODULE, {10,Port}).
-
+%% 	log4erl:info("game_tcp_listener_sup startting"),
+	supervisor:start_link({local,?MODULE}, ?MODULE, {10,Port})
+%% 	log4erl:info("game_tcp_listener_sup started")
+.
 
 
 
@@ -34,15 +36,15 @@ init({AcceptorCount, Port}) ->
                     supervisor,
                     [game_tcp_acceptor_sup]
                 }
-%% 			,
-%%                 {
-%%                     sd_tcp_listener,
-%%                     {sd_tcp_listener, start_link, [AcceptorCount, Port]},
-%%                     transient,
-%%                     100,
-%%                     worker,
-%%                     [sd_tcp_listener]
-%%                 }
+			,
+                {
+                    game_tcp_listener,
+                    {game_tcp_listener, start_link, [AcceptorCount, Port]},
+                    transient,
+                    100,
+                    worker,
+                    [game_tcp_listener]
+                }
             ]
         }
     }.
