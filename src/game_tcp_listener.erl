@@ -10,7 +10,7 @@
 %% ====================================================================
 %% API functions
 %% ====================================================================
--export([]).
+-export([start_link/2]).
 
 %% ====================================================================
 %% behavior functions
@@ -32,7 +32,7 @@ init({AcceptorCount, Port}) ->
         {ok, LSock} ->
             lists:foreach(fun (_) ->
                                 {ok, _APid} = supervisor:start_child(
-                                                  sd_tcp_acceptor_sup, [LSock])
+                                                  game_tcp_acceptor_sup, [LSock])
                           end,
                           lists:duplicate(AcceptorCount, dummy)),
             %{ok, {LIPAddress, LPort}} = inet:sockname(LSock),
