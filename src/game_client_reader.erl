@@ -5,7 +5,7 @@
 %%% @Created : 2010.06.1
 %%% @Description: 读取客户端
 %%%-----------------------------------
--module(sd_reader).
+-module(game_client_reader).
 -export([start_link/0, init/0]).
 -include("common.hrl").
 -include("record.hrl").
@@ -39,7 +39,7 @@ init() ->
                 timeout = 0 
             },
     receive
-        {go, Socket} ->
+        {go,Socket}->
             login_parse_packet(Socket, Client)
     end.
 
@@ -56,88 +56,31 @@ login_parse_packet(Socket, Client) ->
             lib_send:send_one(Socket, ?FL_POLICY_FILE),
             gen_tcp:close(Socket);
 
-        %%登陆处理
+        %%消息处理
         {inet_async, Socket, Ref, {ok, <<Len:16, Cmd:16>>}} ->
             BodyLen = Len - ?HEADER_LENGTH,
             case BodyLen > 0 of
                 true ->
-                    Ref1 = async_recv(Socket, BodyLen, ?TCP_TIMEOUT),
+                    Ref1 = async_recv(Socket,BodyLen,?TCP_TIMEOUT),
                     receive
                        {inet_async, Socket, Ref1, {ok, Binary}} ->
+						   %%调用相应的消息模块封装消息
                             case routing(Cmd, Binary) of
-                                %%先验证登陆
-                                {ok, login, Data} ->
-                                    case pp_account:handle(10000, [], Data) of
-                                        true ->
-                                            [Accid, Accname, _, _] = Data,
-                                            Client1 = Client#client{
-                                                login = 1,
-                                                accid = Accid,
-                                                accname = Accname
-                                            },
-                                            {ok, BinData} = pt_10:write(10000, 1),
-                                            lib_send:send_one(Socket, BinData),
-                                            login_parse_packet(Socket, Client1);
-                                        false ->
-                                            login_lost(Socket, Client, 0, "login fail")
-                                    end;
-                                %%读取玩家列表
-                                {ok, lists, _Data} ->
-                                    case Client#client.login == 1 of
-                                        true ->
-                                            pp_account:handle(10002, Socket,  Client#client.accname),
-                                            login_parse_packet(Socket, Client);
-                                        false ->
-                                            login_lost(Socket, Client, 0, "login fail")
-                                    end;
-
-                                %%创建角色
-                                {ok, create, Data} ->
-                                    case Client#client.login == 1 of
-                                        true ->
-                                            Data1 = [Client#client.accid, Client#client.accname] ++ Data,
-                                            pp_account:handle(10003, Socket, Data1),
-                                            login_parse_packet(Socket, Client);
-                                        false ->
-                                            login_lost(Socket, Client, 0, "login fail")
-                                    end;
-
-                                %%删除角色
-                                {ok, delete, Id} ->
-                                    case Client#client.login == 1 of
-                                        true ->
-                                            pp_account:handle(10005, Socket, [Id, Client#client.accname]),
-                                            login_parse_packet(Socket, Client);
-                                        false ->
-                                            login_lost(Socket, Client, 0, "login fail")
-                                    end;
-
-                                %%进入游戏
-                                {ok, enter, Id} ->
-                                    case Client#client.login == 1 of
-                                        true ->
-                                            case mod_login:login(start, [Id, Client#client.accname], Socket) of
-                                                {error, fail} ->
-                                                    %%告诉玩家登陆失败
-                                                    {ok, BinData} = pt_10:write(10004, 0),
-                                                    lib_send:send_one(Socket, BinData),
-                                                    login_parse_packet(Socket, Client);
-                                                {ok, Pid} ->
-                                                    %%告诉玩家登陆成功
-                                                    {ok, BinData} = pt_10:write(10004, 1),
-                                                    lib_send:send_one(Socket, BinData),
-                                                    do_parse_packet(Socket, Client#client {player = Pid})
-                                            end;
-                                        false ->
-                                            login_lost(Socket, Client, 0, "login fail")
-                                    end;
-                                Other ->
+								{ok,_,Data} ->
+									%%调用消息处理模块
+									case msg_handle(Cmd, Data) of
+										%%报错断开连接
+										{error,Reason} -> login_lost(Socket, Client, 0,Reason);
+										_ ->  login_parse_packet(Socket, Client)
+									end;
+                               	 Other ->
                                     login_lost(Socket, Client, 0, Other)
                             end;
                         Other ->
                             login_lost(Socket, Client, 0, Other)
                     end;
                 false ->
+					%%心跳？
                     case Client#client.login == 1 of
                         true ->
                             pp_account:handle(Cmd, Socket,  Client#client.accname),
@@ -152,7 +95,6 @@ login_parse_packet(Socket, Client) ->
             case Client#client.timeout >= ?HEART_TIMEOUT_TIME of
                 true ->
                     login_lost(Socket, Client, 0, {error,timeout});
-                    
                 false ->
                     login_parse_packet(Socket, Client#client {timeout = Client#client.timeout+1})
             end;
@@ -233,10 +175,17 @@ do_lost(_Socket, Client, _Cmd, Reason) ->
 %%组成如:pt_10:read
 routing(Cmd, Binary) ->
     %%取前面二位区分功能类型
-    %io:format("read: ~p~n",[Cmd]),
     [H1, H2, _, _, _] = integer_to_list(Cmd),
     Module = list_to_atom("pt_"++[H1,H2]),
     Module:read(Cmd, Binary).
+
+%%处理消息调用
+msg_handle(Cmd,Data) ->
+%% 	 [ModuleName|T] =Data,
+%% 	 Module=list_to_atom("handle_"++[ModuleName]),
+%% 	 Module:handle(Cmd,T)
+ io:format("receive msg ~p~p~n",[Cmd,Data])
+. 
 
 %% 接受信息
 async_recv(Sock, Length, Timeout) when is_port(Sock) ->
