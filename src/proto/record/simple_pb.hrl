@@ -1,0 +1,1 @@
+-record(person, {name, address, phone_number, age}).

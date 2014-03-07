@@ -1,7 +1,9 @@
 {
 	[
 		'src/*',
-		'src/pp/*'
+		'src/pp/*',
+		'src/lib/lua/*',
+		'src/lib/proto/*'
 	]
 	,
 	[

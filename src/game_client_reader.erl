@@ -46,7 +46,7 @@ init() ->
 %%接收来自客户端的数据 - 先处理登陆
 %%Socket：socket id
 %%Client: client记录
-login_parse_packet(Socket, Client) ->
+login_parse_packet(Socket,Client) ->
     Ref = async_recv(Socket, ?HEADER_LENGTH, ?HEART_TIMEOUT),
     receive
         %%flash安全沙箱
@@ -79,15 +79,8 @@ login_parse_packet(Socket, Client) ->
                         Other ->
                             login_lost(Socket, Client, 0, Other)
                     end;
-                false ->
-					%%心跳？
-                    case Client#client.login == 1 of
-                        true ->
-                            pp_account:handle(Cmd, Socket,  Client#client.accname),
-                            login_parse_packet(Socket, Client);
-                        false ->
-                            login_lost(Socket, Client, 0, "login fail")
-                    end
+				%%内容长度为空
+                false -> login_lost(Socket, Client, 0, "login fail")
             end;
 
         %%超时处理
@@ -179,13 +172,25 @@ routing(Cmd, Binary) ->
     Module = list_to_atom("pt_"++[H1,H2]),
     Module:read(Cmd, Binary).
 
+%% routing(Cmd, Binary) ->
+%%     %%取前面二位区分功能类型
+%%     [H1, H2, _, _, _] = integer_to_list(Cmd),
+%%     Module = list_to_atom("pt_"++[H1,H2]),
+%%     Module:read(Cmd, Binary).
+
+
 %%处理消息调用
+%% msg_handle(Cmd,[]) ->
+%% %% 	 [ModuleName|T] =Data,
+%% %% 	 Module=list_to_atom("handle_"++[ModuleName]),
+%% %% 	 Module:handle(Cmd,T)
+%%  io:format("receive msg ~p~n",[Cmd]);
+
 msg_handle(Cmd,Data) ->
 %% 	 [ModuleName|T] =Data,
 %% 	 Module=list_to_atom("handle_"++[ModuleName]),
 %% 	 Module:handle(Cmd,T)
- io:format("receive msg ~p~p~n",[Cmd,Data])
-. 
+ io:format("receive msg ~p~p~n",[Cmd,Data]). 
 
 %% 接受信息
 async_recv(Sock, Length, Timeout) when is_port(Sock) ->
