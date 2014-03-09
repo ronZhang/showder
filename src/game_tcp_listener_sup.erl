@@ -13,9 +13,10 @@
 
 %%启动
 start_link(Port) ->
-%% 	log4erl:info("game_tcp_listener_sup startting"),
-	supervisor:start_link({local,?MODULE}, ?MODULE, {10,Port})
-%% 	log4erl:info("game_tcp_listener_sup started")
+	log4erl:info("game_tcp_listener_sup startting"),
+	{ok,Pid}=supervisor:start_link({local,?MODULE}, ?MODULE, {10,Port}),
+	log4erl:info("game_tcp_listener_sup started"),
+	{ok,Pid}
 .
 
 

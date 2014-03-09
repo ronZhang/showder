@@ -1,0 +1,9 @@
+{application,
+game_server,
+[{description,"game_server"},
+ {vsn,"0.1.0"},
+ {modules,[]},
+ {registered,[game_sup]},
+ {application,[kernel,stdlib,log4erl]},
+ {mod,{game_application,["localhost",8080,1]}}
+ ]}.

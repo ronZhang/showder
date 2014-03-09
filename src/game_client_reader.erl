@@ -169,7 +169,7 @@ do_lost(_Socket, Client, _Cmd, Reason) ->
 routing(Cmd, Binary) ->
     %%取前面二位区分功能类型
     [H1, H2, _, _, _] = integer_to_list(Cmd),
-    Module = list_to_atom("pt_"++[H1,H2]),
+    Module = list_to_atom("pp_"++[H1,H2]),
     Module:read(Cmd, Binary).
 
 %% routing(Cmd, Binary) ->
