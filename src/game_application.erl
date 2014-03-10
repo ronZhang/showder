@@ -39,7 +39,6 @@ start_mod(Ip,Port,SerId)->
 	start_client_sup(),
 	
 	RootSub
-
 .
 
 

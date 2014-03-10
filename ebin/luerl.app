@@ -1,0 +1,7 @@
+{application,luerl,
+             [{description,[]},
+              {vsn,"1"},
+              {registered,[]},
+              {applications,[kernel,stdlib]},
+              {mod,{luerl_app,[]}},
+              {env,[]}]}.

@@ -40,13 +40,14 @@ init() ->
             },
     receive
         {go,Socket}->
-            login_parse_packet(Socket, Client)
+           parse_packet(Socket, Client)
     end.
 
 %%接收来自客户端的数据 - 先处理登陆
 %%Socket：socket id
 %%Client: client记录
-login_parse_packet(Socket,Client) ->
+
+parse_packet(Socket,Client) ->
     Ref = async_recv(Socket, ?HEADER_LENGTH, ?HEART_TIMEOUT),
     receive
         %%flash安全沙箱
@@ -66,15 +67,8 @@ login_parse_packet(Socket,Client) ->
                        {inet_async, Socket, Ref1, {ok, Binary}} ->
 						   %%调用相应的消息模块封装消息
                             case routing(Cmd, Binary) of
-								{ok,_,Data} ->
-									%%调用消息处理模块
-									case msg_handle(Cmd, Data) of
-										%%报错断开连接
-										{error,Reason} -> login_lost(Socket, Client, 0,Reason);
-										_ ->  login_parse_packet(Socket, Client)
-									end;
-                               	 Other ->
-                                    login_lost(Socket, Client, 0, Other)
+								ok -> parse_packet(Socket, Client);
+                               	Other -> login_lost(Socket, Client, 0, Other)
                             end;
                         Other ->
                             login_lost(Socket, Client, 0, Other)
@@ -89,80 +83,20 @@ login_parse_packet(Socket,Client) ->
                 true ->
                     login_lost(Socket, Client, 0, {error,timeout});
                 false ->
-                    login_parse_packet(Socket, Client#client {timeout = Client#client.timeout+1})
+                    parse_packet(Socket, Client#client {timeout = Client#client.timeout+1})
             end;
-
         %%用户断开连接或出错
         Other ->
             login_lost(Socket, Client, 0, Other)
     end.
 
-%%接收来自客户端的数据 - 登陆后进入游戏逻辑
-%%Socket：socket id
-%%Client: client记录
-do_parse_packet(Socket, Client) ->
-    Ref = async_recv(Socket, ?HEADER_LENGTH, ?HEART_TIMEOUT),
-    receive
-        {inet_async, Socket, Ref, {ok, <<Len:16, Cmd:16>>}} ->
-            BodyLen = Len - ?HEADER_LENGTH,
-            case BodyLen > 0 of
-                true ->
-                    Ref1 = async_recv(Socket, BodyLen, ?TCP_TIMEOUT),
-                    receive
-                       {inet_async, Socket, Ref1, {ok, Binary}} ->
-                            case routing(Cmd, Binary) of
-                                %%这里是处理游戏逻辑
-                                {ok, Data} ->
-                                    case catch gen:call(Client#client.player, '$gen_call', {'SOCKET_EVENT', Cmd, Data}) of
-                                        {ok,_Res} ->
-                                            do_parse_packet(Socket, Client);
-                                        {'EXIT',Reason} ->
-                                             do_lost(Socket, Client, Cmd, Reason)
-                                    end;
-                                Other ->
-                                    do_lost(Socket, Client, Cmd, Other)
-                            end;
-                         Other ->
-                            do_lost(Socket, Client, Cmd, Other)
-                    end;
-                false ->
-                    case routing(Cmd, <<>>) of
-                        %%这里是处理游戏逻辑
-                        {ok, Data} ->
-                            case catch gen:call(Client#client.player, '$gen_call', {'SOCKET_EVENT', Cmd, Data}, 3000) of
-                                {ok,_Res} ->
-                                    do_parse_packet(Socket, Client);
-                                {'EXIT',Reason} ->
-                                    do_lost(Socket, Client, Cmd, Reason)
-                            end;
-                        Other ->
-                            do_lost(Socket, Client, Cmd, Other)
-                    end
-            end;
-
-        %%超时处理
-        {inet_async, Socket, Ref, {error,timeout}} ->
-            case Client#client.timeout >= ?HEART_TIMEOUT_TIME of
-                true ->
-                    do_lost(Socket, Client, 0, {error,timeout});
-                false ->
-                    do_parse_packet(Socket, Client#client {timeout = Client#client.timeout+1})            
-            end;
-            
-        %%用户断开连接或出错
-        Other ->
-            do_lost(Socket, Client, 0, Other)
-    end.
-
 %%断开连接
 login_lost(Socket, _Client, _Cmd, Reason) ->
+	%%退出
+	mod_login:login_out(_Client),
     gen_tcp:close(Socket),
     exit({unexpected_message, Reason}).
 
-%%退出游戏
-do_lost(_Socket, Client, _Cmd, Reason) ->
-    mod_login:logout(Client#client.player),
-    exit({unexpected_message, Reason}).
 
 %%路由
 %%组成如:pt_10:read
@@ -170,22 +104,13 @@ routing(Cmd, Binary) ->
     %%取前面二位区分功能类型
     [H1, H2, _, _, _] = integer_to_list(Cmd),
     Module = list_to_atom("pp_"++[H1,H2]),
-    Module:read(Cmd, Binary).
+	try Module:handle(Cmd, Binary) of
+		_ -> ok
+	catch   
+		_:Error -> Error 
+	end .
 
-%% routing(Cmd, Binary) ->
-%%     %%取前面二位区分功能类型
-%%     [H1, H2, _, _, _] = integer_to_list(Cmd),
-%%     Module = list_to_atom("pt_"++[H1,H2]),
-%%     Module:read(Cmd, Binary).
-
-
-%%处理消息调用
-%% msg_handle(Cmd,[]) ->
-%% %% 	 [ModuleName|T] =Data,
-%% %% 	 Module=list_to_atom("handle_"++[ModuleName]),
-%% %% 	 Module:handle(Cmd,T)
-%%  io:format("receive msg ~p~n",[Cmd]);
-
+%%消息处理
 msg_handle(Cmd,Data) ->
 %% 	 [ModuleName|T] =Data,
 %% 	 Module=list_to_atom("handle_"++[ModuleName]),

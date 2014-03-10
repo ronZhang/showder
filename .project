@@ -3,6 +3,8 @@
 	<name>showder</name>
 	<comment></comment>
 	<projects>
+		<project>showder_login</project>
+		<project>showder_redis</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

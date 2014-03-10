@@ -3,7 +3,6 @@
 
 
 -module(login_test).
-
 %% ====================================================================
 %% API functions
 %% ====================================================================
@@ -21,17 +20,17 @@ start()->
 		{error, Reason} -> {error,Reason}
 	end.
 
-
 sendData(Socket)-> 
-	Data=simple_pb:encode_person({person, <<"Nick">>, <<"Mountain View">>,
+	Data=simple_pb:encode_person({person,<<"Nick">>, <<"Mountain View">>,
     <<"+1 (000) 555-1234">>,25}),
-	
-	gen_tcp:send(Socket,pack(10000,Data)).
-
+	gen_tcp:send(Socket,pack(10000,Data)),
+	gen_tcp:close(Socket).
 
 pack(Cmd, Data) ->
     L = byte_size(Data) + 4,
     <<L:16, Cmd:16, Data/binary>>.
+
+
 
 
 	
