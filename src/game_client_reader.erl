@@ -15,7 +15,7 @@
 -define(HEADER_LENGTH, 4). % 消息头长度
 
 %%记录客户端进程
--record(client, {
+-record(client,{
             player = none,
             login  = 0,
             accid  = 0,
@@ -30,7 +30,7 @@ start_link() ->
 %%Host:主机IP
 %%Port:端口
 init() ->
-    process_flag(trap_exit, true),
+    process_flag(trap_exit,true),
     Client = #client{
                 player = none,
                 login  = 0,
@@ -51,24 +51,24 @@ parse_packet(Socket,Client) ->
     Ref = async_recv(Socket, ?HEADER_LENGTH, ?HEART_TIMEOUT),
     receive
         %%flash安全沙箱
-        {inet_async, Socket, Ref, {ok, ?FL_POLICY_REQ}} ->
+        {inet_async,Socket,Ref, {ok,?FL_POLICY_REQ}} ->
             Len = 23 - ?HEADER_LENGTH,
-            async_recv(Socket, Len, ?TCP_TIMEOUT),
+            async_recv(Socket,Len,?TCP_TIMEOUT),
             lib_send:send_one(Socket, ?FL_POLICY_FILE),
             gen_tcp:close(Socket);
 
         %%消息处理
-        {inet_async, Socket, Ref, {ok, <<Len:16, Cmd:16>>}} ->
+        {inet_async,Socket,Ref, {ok,<<Len:16,Cmd:16>>}} ->
             BodyLen = Len - ?HEADER_LENGTH,
             case BodyLen > 0 of
                 true ->
                     Ref1 = async_recv(Socket,BodyLen,?TCP_TIMEOUT),
                     receive
-                       {inet_async, Socket, Ref1, {ok, Binary}} ->
+                       {inet_async,Socket,Ref1,{ok, Binary}} ->
 						   %%调用相应的消息模块封装消息
-                            case routing(Cmd, Binary) of
+                            case routing(Cmd,Binary) of
 								ok -> parse_packet(Socket, Client);
-                               	Other -> login_lost(Socket, Client, 0, Other)
+                               	Other -> login_lost(Socket, Client,0,Other)
                             end;
                         Other ->
                             login_lost(Socket, Client, 0, Other)
@@ -81,7 +81,7 @@ parse_packet(Socket,Client) ->
         {inet_async, Socket, Ref, {error,timeout}} ->
             case Client#client.timeout >= ?HEART_TIMEOUT_TIME of
                 true ->
-                    login_lost(Socket, Client, 0, {error,timeout});
+                    login_lost(Socket,Client, 0, {error,timeout});
                 false ->
                     parse_packet(Socket, Client#client {timeout = Client#client.timeout+1})
             end;
@@ -98,17 +98,21 @@ login_lost(Socket, _Client, _Cmd, Reason) ->
     exit({unexpected_message, Reason}).
 
 
+execute(Module,Cmd,)->
+	
+
 %%路由
 %%组成如:pt_10:read
 routing(Cmd, Binary) ->
     %%取前面二位区分功能类型
     [H1, H2, _, _, _] = integer_to_list(Cmd),
-    Module = list_to_atom("pp_"++[H1,H2]),
+    Module = list_to_atom("pt_"++[H1,H2]),
 	try Module:handle(Cmd, Binary) of
 		_ -> ok
 	catch   
 		_:Error -> Error 
 	end .
+
 
 %%消息处理
 msg_handle(Cmd,Data) ->
@@ -118,7 +122,7 @@ msg_handle(Cmd,Data) ->
  io:format("receive msg ~p~p~n",[Cmd,Data]). 
 
 %% 接受信息
-async_recv(Sock, Length, Timeout) when is_port(Sock) ->
+async_recv(Sock,Length,Timeout) when is_port(Sock) ->
     case prim_inet:async_recv(Sock, Length, Timeout) of
         {error, Reason} -> throw({Reason});
         {ok, Res}       -> Res;

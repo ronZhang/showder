@@ -7,4 +7,4 @@ external_modules=
 include_dirs=src/proto/record;include
 nukeOutputOnClean=false
 output_dir=ebin;
-source_dirs=src/proto/record;src/test/login;src/test;src/proto;src/pp;src/lib/lua;src/lib;src
+source_dirs=src/proto/record;src/test/login;src/test;src/proto;src/pp;src/lib/net;src/lib/lua;src/lib;src
