@@ -15,12 +15,13 @@
 -export([getUser/1]).
 
 
+%%取的用户
 getUser(PlayerId)->
 		case dao:get(?PlayerTable,1,PlayerId) of
 			{ok,Data} -> Data;
 			
-		end
-	.
+			Other -> {error,Other}
+		end.
 	
 
 
