@@ -21,9 +21,9 @@ start()->
 	end.
 
 sendData(Socket)-> 
-	Data=simple_pb:encode_person({person,<<"Nick">>, <<"Mountain View">>,
-    <<"+1 (000) 555-1234">>,25}),
-	gen_tcp:send(Socket,pack(10000,Data)),
+%% 	Data=simple_pb:encode_person({person,<<"Nick">>, <<"Mountain View">>,
+%%     <<"+1 (000) 555-1234">>,25}),
+	gen_tcp:send(Socket,pack(10000,term_to_binary({amao,amao}) )),
 	gen_tcp:close(Socket).
 
 pack(Cmd, Data) ->

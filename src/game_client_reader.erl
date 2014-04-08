@@ -15,13 +15,7 @@
 -define(HEADER_LENGTH, 4). % 消息头长度
 
 %%记录客户端进程
--record(client,{
-            player = none,
-            login  = 0,
-            accid  = 0,
-            accname = none,
-            timeout = 0 % 超时次数
-     }).
+
 
 start_link() ->
     {ok, proc_lib:spawn_link(?MODULE, init, [])}.
@@ -112,14 +106,16 @@ routing(Cmd, Binary) ->
     Module = list_to_atom("pt_"++[H1,H2]),
 	Module:handle(Cmd,Binary).
 
-%%消息处理
+%%登录
+msg_handle(10000,Data,Client) ->
+	Test=mod_login:login(self(),Client,Data),
+	Test;
+%%退出
+msg_handle(10001,Data,Client) ->
+	mod_login:login_out(Client);
+%%其他
 msg_handle(Cmd,Data,Client) ->
-	case Client#client.login of 
-		  %%已经登录
-		  1-> Client#client.player#player.id ! {Cmd,Data};
-		  %%未登录
-	      0 -> mod_login:login(Client,Data)
-	end.
+ Client#client.player#player.id ! {self(),Cmd,Data}.
 
 %% 接受信息
 async_recv(Sock,Length,Timeout) when is_port(Sock) ->

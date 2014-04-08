@@ -1,3 +1,6 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=c3fe024ce1afa40f96bcdffae839f17fab9dd822
 backend_version=R16B
 builder=internal
 compiler/warn_unused_import=true
@@ -7,8 +10,4 @@ external_modules=
 include_dirs=src/proto/record;include
 nukeOutputOnClean=false
 output_dir=ebin;
-<<<<<<< HEAD
-source_dirs=src/proto/record;src/test/login;src/test;src/proto;src/pp;src/lib/net;src/lib/lua;src/lib;src
-=======
-source_dirs=src/proto/record;src/test/login;src/test;src/proto;src/pp;src/lib/redis;src/lib/dao;src/lib/lua;src/lib;src
->>>>>>> c3fe024ce1afa40f96bcdffae839f17fab9dd822
+source_dirs=src/mod;src/proto/record;src/test/login;src/test;src/proto;src/proto/record;src/pp;src/lib/redis;src/lib/dao;src/lib/lua;src/lib;src
