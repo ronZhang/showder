@@ -67,7 +67,8 @@ parse_packet(Socket,Client) ->
                        {inet_async,Socket,Ref1,{ok, Binary}} ->
 						   %%调用相应的消息模块封装消息
                             case routing(Cmd,Binary) of
-								ok -> parse_packet(Socket, Client);
+								{ok,Msg}-> msg_handle(Cmd,Msg,Client),
+										   parse_packet(Socket, Client);
                                	Other -> login_lost(Socket, Client,0,Other)
                             end;
                         Other ->
@@ -85,6 +86,11 @@ parse_packet(Socket,Client) ->
                 false ->
                     parse_packet(Socket, Client#client {timeout = Client#client.timeout+1})
             end;
+		
+		%%登录成功
+		{login_success} -> 
+						parse_packet(Socket, Client#client{login =1});
+								   
         %%用户断开连接或出错
         Other ->
             login_lost(Socket, Client, 0, Other)
@@ -98,28 +104,22 @@ login_lost(Socket, _Client, _Cmd, Reason) ->
     exit({unexpected_message, Reason}).
 
 
-execute(Module,Cmd,)->
-	
-
 %%路由
 %%组成如:pt_10:read
 routing(Cmd, Binary) ->
     %%取前面二位区分功能类型
     [H1, H2, _, _, _] = integer_to_list(Cmd),
     Module = list_to_atom("pt_"++[H1,H2]),
-	try Module:handle(Cmd, Binary) of
-		_ -> ok
-	catch   
-		_:Error -> Error 
-	end .
-
+	Module:handle(Cmd,Binary).
 
 %%消息处理
-msg_handle(Cmd,Data) ->
-%% 	 [ModuleName|T] =Data,
-%% 	 Module=list_to_atom("handle_"++[ModuleName]),
-%% 	 Module:handle(Cmd,T)
- io:format("receive msg ~p~p~n",[Cmd,Data]). 
+msg_handle(Cmd,Data,Client) ->
+	case Client#client.login of 
+		  %%已经登录
+		  1-> Client#client.player#player.id ! {Cmd,Data};
+		  %%未登录
+	      0 -> mod_login:login(Client,Data)
+	end.
 
 %% 接受信息
 async_recv(Sock,Length,Timeout) when is_port(Sock) ->

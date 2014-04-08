@@ -1,35 +1,21 @@
 %% @author ron
-%% @docAdd description to pp_10.
-%%测试模块
+%% @doc 协议解析
+
 
 -module(pt_10).
--include("simple_pb.hrl").
+
 %% ====================================================================
 %% API functions
 %% ====================================================================
--export([handle/2,write/2]).
-
-%%消息处理test
-handle(10000,Binary) ->
-	Person=simple_pb:decode_person(Binary),	
-	pp_login:test(Person),
-	ok;
-
-handle(10001,Binary) ->
-	Person=simple_pb:decode_person(Binary),	
-	ok.
+-export([handle/2]).
 
 
 
+handle(10001,Bin)->
 
 
-
-
-
-
-%%组装消息格式
-write(10100,Data)->
-	{ok,pt:pack(10100,Data)}.
-	
+%% ====================================================================
+%% Internal functions
+%% ====================================================================
 
 

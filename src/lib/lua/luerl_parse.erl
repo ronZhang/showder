@@ -1,7 +1,6 @@
 -module(luerl_parse).
 -export([parse/1, parse_and_scan/1, format_error/1]).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 220).
-
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 221).
 
 -export([chunk/1]).
 
@@ -57,7 +56,7 @@ check_functioncall({'.',L,H,T}) ->
 check_functioncall(Other) ->
     return_error(line(Other),"illegal call").
 
--file("d:/ERL510~1.2/lib/parsetools-2.0.9/include/yeccpre.hrl", 0).
+-file("/usr/local/lib/erlang/lib/parsetools-2.0.10/include/yeccpre.hrl", 0).
 %%
 %% %CopyrightBegin%
 %%
@@ -241,7 +240,7 @@ yecctoken2string(Other) ->
 
 
 
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.erl", 244).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.erl", 243).
 
 yeccpars2(0=S, Cat, Ss, Stack, T, Ts, Tzr) ->
  yeccpars2_0(S, Cat, Ss, Stack, T, Ts, Tzr);
@@ -2911,14 +2910,14 @@ yeccgoto_while_stat(1=_S, Cat, Ss, Stack, T, Ts, Tzr) ->
  yeccpars2_4(_S, Cat, Ss, Stack, T, Ts, Tzr).
 
 -compile({inline,yeccpars2_0_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 68).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 68).
 yeccpars2_0_(__Stack0) ->
  [begin
    [ ]
   end | __Stack0].
 
 -compile({inline,yeccpars2_6_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 126).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 126).
 yeccpars2_6_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -2926,7 +2925,7 @@ yeccpars2_6_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_7_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 69).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 69).
 yeccpars2_7_(__Stack0) ->
  [__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2934,7 +2933,7 @@ yeccpars2_7_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_8_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 60).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 60).
 yeccpars2_8_(__Stack0) ->
  [__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2942,7 +2941,7 @@ yeccpars2_8_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_10_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 76).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 76).
 yeccpars2_10_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -2950,7 +2949,7 @@ yeccpars2_10_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_19_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 78).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 78).
 yeccpars2_19_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -2958,28 +2957,28 @@ yeccpars2_19_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_20_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 68).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 68).
 yeccpars2_20_(__Stack0) ->
  [begin
    [ ]
   end | __Stack0].
 
 -compile({inline,yeccpars2_26_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 68).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 68).
 yeccpars2_26_(__Stack0) ->
  [begin
    [ ]
   end | __Stack0].
 
 -compile({inline,yeccpars2_27_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 0).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 0).
 yeccpars2_27_(__Stack0) ->
  [begin
    '$undefined'
   end | __Stack0].
 
 -compile({inline,yeccpars2_50_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 181).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 181).
 yeccpars2_50_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -2987,7 +2986,7 @@ yeccpars2_50_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_51_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 186).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 186).
 yeccpars2_51_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -2995,7 +2994,7 @@ yeccpars2_51_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_54_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 175).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 175).
 yeccpars2_54_(__Stack0) ->
  [__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3003,7 +3002,7 @@ yeccpars2_54_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_72_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 202).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 202).
 yeccpars2_72_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3011,7 +3010,7 @@ yeccpars2_72_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_73_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 209).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 209).
 yeccpars2_73_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3019,7 +3018,7 @@ yeccpars2_73_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_74_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 208).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 208).
 yeccpars2_74_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3027,7 +3026,7 @@ yeccpars2_74_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_75_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 200).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 200).
 yeccpars2_75_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3035,7 +3034,7 @@ yeccpars2_75_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_77_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 184).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 184).
 yeccpars2_77_(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3043,7 +3042,7 @@ yeccpars2_77_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_78_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 204).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 204).
 yeccpars2_78_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3051,7 +3050,7 @@ yeccpars2_78_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_79_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 206).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 206).
 yeccpars2_79_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3059,7 +3058,7 @@ yeccpars2_79_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_80_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 201).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 201).
 yeccpars2_80_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3067,7 +3066,7 @@ yeccpars2_80_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_81_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 203).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 203).
 yeccpars2_81_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3075,7 +3074,7 @@ yeccpars2_81_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_82_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 205).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 205).
 yeccpars2_82_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3083,7 +3082,7 @@ yeccpars2_82_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_83_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 198).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 198).
 yeccpars2_83_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3091,7 +3090,7 @@ yeccpars2_83_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_84_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 207).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 207).
 yeccpars2_84_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3099,7 +3098,7 @@ yeccpars2_84_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_85_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 196).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 196).
 yeccpars2_85_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3107,7 +3106,7 @@ yeccpars2_85_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_86_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 195).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 195).
 yeccpars2_86_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3115,7 +3114,7 @@ yeccpars2_86_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_87_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 197).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 197).
 yeccpars2_87_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3123,7 +3122,7 @@ yeccpars2_87_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_88_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 199).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 199).
 yeccpars2_88_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3131,7 +3130,7 @@ yeccpars2_88_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_90_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 185).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 185).
 yeccpars2_90_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3139,7 +3138,7 @@ yeccpars2_90_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_91_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 176).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 176).
 yeccpars2_91_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3147,7 +3146,7 @@ yeccpars2_91_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_92_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 179).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 179).
 yeccpars2_92_(__Stack0) ->
  [__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3155,7 +3154,7 @@ yeccpars2_92_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_93_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 0).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 0).
 yeccpars2_93_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -3163,7 +3162,7 @@ yeccpars2_93_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_94_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 0).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 0).
 yeccpars2_94_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -3171,7 +3170,7 @@ yeccpars2_94_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_95_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 182).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 182).
 yeccpars2_95_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3179,7 +3178,7 @@ yeccpars2_95_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_96_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 211).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 211).
 yeccpars2_96_(__Stack0) ->
  [__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3187,7 +3186,7 @@ yeccpars2_96_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_97_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 166).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 166).
 yeccpars2_97_(__Stack0) ->
  [__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3195,14 +3194,14 @@ yeccpars2_97_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_101_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 68).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 68).
 yeccpars2_101_(__Stack0) ->
  [begin
    [ ]
   end | __Stack0].
 
 -compile({inline,yeccpars2_102_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 173).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 173).
 yeccpars2_102_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -3210,7 +3209,7 @@ yeccpars2_102_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_103_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 134).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 134).
 yeccpars2_103_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -3218,7 +3217,7 @@ yeccpars2_103_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_105_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 168).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 168).
 yeccpars2_105_(__Stack0) ->
  [__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3226,7 +3225,7 @@ yeccpars2_105_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_107_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 172).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 172).
 yeccpars2_107_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3234,7 +3233,7 @@ yeccpars2_107_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_108_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 135).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 135).
 yeccpars2_108_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3242,14 +3241,14 @@ yeccpars2_108_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_109_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 68).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 68).
 yeccpars2_109_(__Stack0) ->
  [begin
    [ ]
   end | __Stack0].
 
 -compile({inline,yeccpars2_111_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 169).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 169).
 yeccpars2_111_(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3257,7 +3256,7 @@ yeccpars2_111_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_112_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 215).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 215).
 yeccpars2_112_(__Stack0) ->
  [__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3265,7 +3264,7 @@ yeccpars2_112_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_113_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 212).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 212).
 yeccpars2_113_(__Stack0) ->
  [__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3273,14 +3272,14 @@ yeccpars2_113_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_114_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 68).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 68).
 yeccpars2_114_(__Stack0) ->
  [begin
    [ ]
   end | __Stack0].
 
 -compile({inline,yeccpars2_116_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 90).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 90).
 yeccpars2_116_(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3288,7 +3287,7 @@ yeccpars2_116_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_117_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 163).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 163).
 yeccpars2_117_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -3296,7 +3295,7 @@ yeccpars2_117_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_118_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 157).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 157).
 yeccpars2_118_(__Stack0) ->
  [__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3304,7 +3303,7 @@ yeccpars2_118_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_122_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 164).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 164).
 yeccpars2_122_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -3312,7 +3311,7 @@ yeccpars2_122_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_125_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 131).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 131).
 yeccpars2_125_(__Stack0) ->
  [__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3320,7 +3319,7 @@ yeccpars2_125_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_127_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 159).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 159).
 yeccpars2_127_(__Stack0) ->
  [__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3328,7 +3327,7 @@ yeccpars2_127_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_128_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 132).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 132).
 yeccpars2_128_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3336,7 +3335,7 @@ yeccpars2_128_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_130_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 137).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 137).
 yeccpars2_130_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -3344,7 +3343,7 @@ yeccpars2_130_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_131_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 161).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 161).
 yeccpars2_131_(__Stack0) ->
  [__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3352,7 +3351,7 @@ yeccpars2_131_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_132_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 162).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 162).
 yeccpars2_132_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3360,7 +3359,7 @@ yeccpars2_132_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_134_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 138).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 138).
 yeccpars2_134_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3368,7 +3367,7 @@ yeccpars2_134_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_135_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 62).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 62).
 yeccpars2_135_(__Stack0) ->
  [__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3376,14 +3375,14 @@ yeccpars2_135_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_136_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 0).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 0).
 yeccpars2_136_(__Stack0) ->
  [begin
    '$undefined'
   end | __Stack0].
 
 -compile({inline,yeccpars2_137_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 0).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 0).
 yeccpars2_137_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -3391,7 +3390,7 @@ yeccpars2_137_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_138_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 63).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 63).
 yeccpars2_138_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3399,7 +3398,7 @@ yeccpars2_138_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_141_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 92).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 92).
 yeccpars2_141_(__Stack0) ->
  [__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3407,7 +3406,7 @@ yeccpars2_141_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_142_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 120).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 120).
 yeccpars2_142_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -3415,7 +3414,7 @@ yeccpars2_142_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_143_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 86).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 86).
 yeccpars2_143_(__Stack0) ->
  [__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3423,7 +3422,7 @@ yeccpars2_143_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_146_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 119).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 119).
 yeccpars2_146_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3431,7 +3430,7 @@ yeccpars2_146_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_149_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 121).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 121).
 yeccpars2_149_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3439,42 +3438,42 @@ yeccpars2_149_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_151_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 68).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 68).
 yeccpars2_151_(__Stack0) ->
  [begin
    [ ]
   end | __Stack0].
 
 -compile({inline,yeccpars2_152_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 99).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 99).
 yeccpars2_152_(__Stack0) ->
  [begin
    [ ]
   end | __Stack0].
 
 -compile({inline,yeccpars2_153_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 102).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 102).
 yeccpars2_153_(__Stack0) ->
  [begin
    [ ]
   end | __Stack0].
 
 -compile({inline,yeccpars2_155_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 68).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 68).
 yeccpars2_155_(__Stack0) ->
  [begin
    [ ]
   end | __Stack0].
 
 -compile({inline,yeccpars2_158_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 68).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 68).
 yeccpars2_158_(__Stack0) ->
  [begin
    [ ]
   end | __Stack0].
 
 -compile({inline,yeccpars2_159_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 98).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 98).
 yeccpars2_159_(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3482,7 +3481,7 @@ yeccpars2_159_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_160_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 101).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 101).
 yeccpars2_160_(__Stack0) ->
  [__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3490,7 +3489,7 @@ yeccpars2_160_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_161_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 96).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 96).
 yeccpars2_161_(__Stack0) ->
  [__7,__6,__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3498,7 +3497,7 @@ yeccpars2_161_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_162_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 79).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 79).
 yeccpars2_162_(__Stack0) ->
  [__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3506,7 +3505,7 @@ yeccpars2_162_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_168_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 115).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 115).
 yeccpars2_168_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3514,7 +3513,7 @@ yeccpars2_168_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_169_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 124).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 124).
 yeccpars2_169_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3522,7 +3521,7 @@ yeccpars2_169_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_170_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 85).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 85).
 yeccpars2_170_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3530,7 +3529,7 @@ yeccpars2_170_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_172_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 134).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 134).
 yeccpars2_172_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -3538,14 +3537,14 @@ yeccpars2_172_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_175_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 68).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 68).
 yeccpars2_175_(__Stack0) ->
  [begin
    [ ]
   end | __Stack0].
 
 -compile({inline,yeccpars2_177_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 108).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 108).
 yeccpars2_177_(__Stack0) ->
  [__7,__6,__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3553,14 +3552,14 @@ yeccpars2_177_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_180_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 68).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 68).
 yeccpars2_180_(__Stack0) ->
  [begin
    [ ]
   end | __Stack0].
 
 -compile({inline,yeccpars2_182_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 110).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 110).
 yeccpars2_182_(__Stack0) ->
  [__7,__6,__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3568,7 +3567,7 @@ yeccpars2_182_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_184_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 80).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 80).
 yeccpars2_184_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3576,7 +3575,7 @@ yeccpars2_184_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_186_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 88).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 88).
 yeccpars2_186_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3584,7 +3583,7 @@ yeccpars2_186_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_188_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 154).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 154).
 yeccpars2_188_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3592,7 +3591,7 @@ yeccpars2_188_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_191_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 72).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 72).
 yeccpars2_191_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3600,7 +3599,7 @@ yeccpars2_191_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_192_/1}).
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 127).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 127).
 yeccpars2_192_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -3608,4 +3607,4 @@ yeccpars2_192_(__Stack0) ->
   end | __Stack].
 
 
--file("E:/erlangspace/showder/src/lib/lua/luerl_parse.yrl", 276).
+-file("/Users/ron/WorkPlace/shower/showder/src/lib/lua/luerl_parse.yrl", 276).
